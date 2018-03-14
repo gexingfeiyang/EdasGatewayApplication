@@ -1,0 +1,14 @@
+version: '2'
+services:
+    edasgatewayapplication-app:
+        image: edasgatewayapplication
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://edasgatewayapplication-mysql:3306/edasgatewayapplication?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 18080:18080
+    edasgatewayapplication-mysql:
+        extends:
+            file: mysql.yml
+            service: edasgatewayapplication-mysql
